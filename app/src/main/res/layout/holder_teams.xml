@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f4f4f4"
+    android:padding="10sp">
+
+    <ImageView
+        android:id="@+id/iv_crest"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_teamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toEndOf="@+id/iv_crest"
+        app:layout_constraintTop_toTopOf="@+id/iv_crest"
+        tools:text="Athletic Club (ATH)" />
+
+    <TextView
+        android:id="@+id/tv_labelStadium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Estadio :"
+        app:layout_constraintStart_toStartOf="@+id/tv_teamName"
+        app:layout_constraintTop_toBottomOf="@+id/tv_teamName" />
+
+    <TextView
+        android:id="@+id/tv_stadium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_labelStadium"
+        app:layout_constraintStart_toEndOf="@+id/tv_labelStadium"
+        app:layout_constraintTop_toTopOf="@+id/tv_labelStadium"
+        tools:text="San Mamés" />
+
+    <TextView
+        android:id="@+id/tv_labelCoach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Entrenador :"
+        app:layout_constraintStart_toStartOf="@+id/tv_labelStadium"
+        app:layout_constraintTop_toBottomOf="@+id/tv_labelStadium" />
+
+    <TextView
+        android:id="@+id/tv_coach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_labelCoach"
+        app:layout_constraintStart_toEndOf="@+id/tv_labelCoach"
+        app:layout_constraintTop_toTopOf="@+id/tv_labelCoach"
+        tools:text="Ernesto Valverde" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
