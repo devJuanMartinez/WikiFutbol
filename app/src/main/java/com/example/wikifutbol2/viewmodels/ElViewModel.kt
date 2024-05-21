@@ -7,7 +7,6 @@ import com.example.wikifutbol2.data.Repositorio
 import com.example.wikifutbol2.data.models.Competition
 import com.example.wikifutbol2.data.models.personas.Persona
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class ElViewModel : ViewModel() {
 
@@ -30,6 +29,7 @@ class ElViewModel : ViewModel() {
      * @author Jose Lopez Vilchez
      * @return referencia al mutable 'competiciones' definido al principio de la clase
      */
+
     fun getCompetitions() : MutableLiveData<List<Competition?>> {
 
         viewModelScope.launch {
@@ -43,6 +43,10 @@ class ElViewModel : ViewModel() {
         }
 
         return competiciones
+    }
+
+    fun setCompeticion(competicion: List<Competition>){
+        competiciones.value = competicion
     }
 
     /**

@@ -36,6 +36,7 @@ android {
     viewBinding{
         enable = true
     }
+
 }
 
 dependencies {
@@ -50,6 +51,7 @@ dependencies {
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
     implementation(libs.androidx.swiperefreshlayout)
+    implementation (libs.glide)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

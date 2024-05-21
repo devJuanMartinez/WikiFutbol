@@ -6,9 +6,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.wikifutbol2.ui.MainActivity
 import com.example.wikifutbol2.R
 import com.example.wikifutbol2.databinding.LoginLayoutBinding
-import com.example.wikifutbol2.ui.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -37,8 +37,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun compruebaLogin(user: String, pass: String) {
 
-        var usuario = "invitado"
-        var contrasena = "estech1234"
+        var usuario = "usuario"
+        var contrasena = "usuario"
 
         if (usuario.isEmpty() && contrasena.isEmpty()) {
             binding.tvUsuario.error = "El campo está vacío"
