@@ -52,6 +52,8 @@ dependencies {
     implementation (libs.converter.gson)
     implementation(libs.androidx.swiperefreshlayout)
     implementation (libs.glide)
+    implementation (libs.androidx.core.splashscreen)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

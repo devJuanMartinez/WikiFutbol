@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.WikiFutbol2" parent="Base.Theme.WikiFutbol2" />
+    
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.WikiFutbol2</item>
+    </style>
 </resources>
