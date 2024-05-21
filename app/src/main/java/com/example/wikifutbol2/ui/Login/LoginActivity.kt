@@ -29,9 +29,15 @@ class LoginActivity : AppCompatActivity() {
 
 
         binding.btLogin.setOnClickListener {
-            val user = binding.tvUsuario.text.toString()
-            val pass = binding.tvContrasena.text.toString()
+            val user = binding.tvUsuarioLogin.text.toString()
+            val pass = binding.tvContrasenaLogin.text.toString()
             compruebaLogin(user, pass)
+        }
+
+        binding.tvCrearCuenta.setOnClickListener {
+            val intent = Intent(this, CrearCuentaActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -41,16 +47,16 @@ class LoginActivity : AppCompatActivity() {
         var contrasena = "usuario"
 
         if (usuario.isEmpty() && contrasena.isEmpty()) {
-            binding.tvUsuario.error = "El campo está vacío"
-            binding.tvContrasena.error = "El campo está vacío"
+            binding.tvUsuarioLogin.error = "El campo está vacío"
+            binding.tvContrasenaLogin.error = "El campo está vacío"
             return
         }
 
         if (user == usuario && pass == contrasena){
             openNextScreen()
         }else{
-            binding.tvUsuario.error = "El usuario o la contraseña es incorrecta"
-            binding.tvContrasena.error = "El usuario o la contraseña es incorrecta"
+            binding.tvUsuarioLogin.error = "El usuario o la contraseña es incorrecta"
+            binding.tvContrasenaLogin.error = "El usuario o la contraseña es incorrecta"
             return
         }
     }

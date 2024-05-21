@@ -15,7 +15,7 @@ import com.example.wikifutbol2.viewmodels.ElViewModel
 class CompeticionesFragment : Fragment() {
 
     private var _binding: CompeticionesLayoutBinding? = null
-    private var binding get() = _binding!!
+    private val binding get() = _binding!!
 
     private val viewModel by activityViewModels<ElViewModel>()
 
@@ -23,13 +23,13 @@ class CompeticionesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = CompeticionesLayoutBinding.inflate(inflater, container, false)
+        _binding = CompeticionesLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        configRecycler()
+        //configRecycler()
         viewModel.getCompetitions().observe(viewLifecycleOwner){
 
         }
@@ -37,17 +37,18 @@ class CompeticionesFragment : Fragment() {
     private fun configRecycler(list: List<Competition>) {
 
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.recyclerView.adapter = CompeticionesAdapter(list as ArrayList<Competition>, object : CompeticionesAdapter.MyClick {
-            override fun onHolderClick(competicion: Competition) {
-                viewModel.setCompeticion(competicion)
+        //binding.recyclerView.adapter = CompeticionesAdapter(list as ArrayList<Competition>, object : CompeticionesAdapter.MyClick {
+           // override fun onHolderClick(competicion: Competition) {
+               // viewModel.setCompeticion(competicion)
 //                findNavController().navigate(R.id.)
-            }
-        })
+            //}
+        //})
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+    //override fun onDestroyView() {
+       // super.onDestroyView()
+       // _binding = null
+    //}
 }
+
 
