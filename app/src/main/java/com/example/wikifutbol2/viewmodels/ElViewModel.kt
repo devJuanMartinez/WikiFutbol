@@ -75,7 +75,7 @@ class ElViewModel : ViewModel() {
     }
     fun getTeamSelected() = teamSelected
 
-    fun getTeamsByCompetition(id: Int){
+    fun getTeamsByCompetition(id: Int) : MutableLiveData<List<Team>?>{
         viewModelScope.launch {
             val response = repositorio.getTeamsByCompetition(id)
             if(response.code() == 200){
@@ -85,5 +85,6 @@ class ElViewModel : ViewModel() {
                 }
             }
         }
+        return teamsByCompetition
     }
 }

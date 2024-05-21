@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#f4f4f4"
-    android:padding="10sp">
+    android:background="#f4f4f4">
 
     <ImageView
         android:id="@+id/iv_crest"
@@ -65,5 +64,15 @@
         app:layout_constraintStart_toEndOf="@+id/tv_labelCoach"
         app:layout_constraintTop_toTopOf="@+id/tv_labelCoach"
         tools:text="Ernesto Valverde" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_crest" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
