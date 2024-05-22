@@ -19,7 +19,8 @@ class ElViewModel : ViewModel() {
     //referencias a los mutables que luego seran observados
     //Se pueden sacar sus valores con getValue()
 
-    private val competicionesliveData = MutableLiveData<List<Competition?>>()
+
+    private val competicionSeleccionada = MutableLiveData<Competition?>()
     private val ultimaPersonaSeleccionada = MutableLiveData<Persona>()
 
     //-----------------------------
@@ -31,7 +32,7 @@ class ElViewModel : ViewModel() {
      */
 
     fun getCompetitions() : MutableLiveData<List<Competition?>> {
-
+        val competicionesliveData = MutableLiveData<List<Competition?>>()
         viewModelScope.launch {
             val response = repositorio.getCompetitions()
             if (response.code() == 200) {
@@ -45,8 +46,8 @@ class ElViewModel : ViewModel() {
         return competicionesliveData
     }
 
-    fun setCompeticion(competicion: List<Competition>){
-        competicionesliveData.value = competicion
+    fun setCompeticion(competicion: Competition){
+        competicionSeleccionada.value = competicion
     }
 
     /**

@@ -10,8 +10,7 @@ import retrofit2.http.Path
 interface MyService {
     @GET("competitions")
     suspend fun getCompetitions(
-
-    ): Response<CompeticionesResponse>
+        @Header("X-Auth-Token") authtoken : String,): Response<CompeticionesResponse>
 
     @GET("persons/{id}")
     suspend fun getPersona(

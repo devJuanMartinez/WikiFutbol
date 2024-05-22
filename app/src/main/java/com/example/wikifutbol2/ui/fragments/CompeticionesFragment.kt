@@ -19,6 +19,8 @@ class CompeticionesFragment : Fragment() {
 
     private val viewModel by activityViewModels<ElViewModel>()
 
+    private lateinit var adapter: CompeticionesAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,26 +31,28 @@ class CompeticionesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        //configRecycler()
+        configRecycler()
         viewModel.getCompetitions().observe(viewLifecycleOwner){
-
+            adapter.updateList(it)
         }
     }
-    private fun configRecycler(list: List<Competition>) {
+    private fun configRecycler() {
 
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        //binding.recyclerView.adapter = CompeticionesAdapter(list as ArrayList<Competition>, object : CompeticionesAdapter.MyClick {
-           // override fun onHolderClick(competicion: Competition) {
-               // viewModel.setCompeticion(competicion)
+        adapter = CompeticionesAdapter(object : CompeticionesAdapter.MyClick {
+            override fun onHolderClick(competicion: Competition) {
+                viewModel.setCompeticion(competicion)
 //                findNavController().navigate(R.id.)
-            //}
-        //})
+            }
+        })
+
+        binding.recyclerView.adapter = adapter
     }
 
-    //override fun onDestroyView() {
-       // super.onDestroyView()
-       // _binding = null
-    //}
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
 
 

@@ -7,8 +7,9 @@ import com.bumptech.glide.Glide
 import com.example.wikifutbol2.data.models.Competition
 import com.example.wikifutbol2.databinding.HoldercompeticionesLayoutBinding
 
-class CompeticionesAdapter(val listado: List<Competition>, private val listener: MyClick) : RecyclerView.Adapter<CompeticionesAdapter.ClaseCelda>() {
+class CompeticionesAdapter(private val listener: MyClick) : RecyclerView.Adapter<CompeticionesAdapter.ClaseCelda>() {
 
+    val listado = ArrayList<Competition?>()
     interface MyClick{
         fun onHolderClick(competicion: Competition)
     }
@@ -36,7 +37,15 @@ class CompeticionesAdapter(val listado: List<Competition>, private val listener:
         }
 
         holder.itemView.setOnClickListener {
-            listener.onHolderClick(competicion)
+            if (competicion != null) {
+                listener.onHolderClick(competicion)
+            }
         }
+    }
+
+    fun updateList(lista: List<Competition?>) {
+        listado.clear()
+        listado.addAll(lista)
+        notifyDataSetChanged()
     }
 }
