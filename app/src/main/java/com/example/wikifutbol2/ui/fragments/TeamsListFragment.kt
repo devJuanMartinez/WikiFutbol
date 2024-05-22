@@ -6,15 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.navigation.fragment.findNavController
+
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wikifutbol2.R
 import com.example.wikifutbol2.data.models.equipos.Team
+import com.example.wikifutbol2.databinding.TeamsListLayoutBinding
 import com.example.wikifutbol2.ui.adaptadores.MyTeamsAdapter
 import com.example.wikifutbol2.viewmodels.ElViewModel
 
 class TeamsListFragment : Fragment() {
 
-    private val binding = TeamsListFragment()
+    private lateinit var binding : TeamsListLayoutBinding
     private val viewModel by activityViewModels<ElViewModel>()
 
     override fun onCreateView(
@@ -27,8 +30,7 @@ class TeamsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
+        configRecicler()
 
     }
 
@@ -39,10 +41,12 @@ class TeamsListFragment : Fragment() {
             MyTeamsAdapter(it, object: MyTeamsAdapter.MyClick{
                 override fun OnHolderClick(team: Team) {
                     viewModel.setTeamSelected(team)
-
+                    findNavController().navigate(R.id.action_teamsListFragment_to_teamDetailFragment)
                 }
             })
         }
+        binding.reciclerView.layoutManager = layoutManager
+        binding.reciclerView.adapter = adapter
     }
 
 }

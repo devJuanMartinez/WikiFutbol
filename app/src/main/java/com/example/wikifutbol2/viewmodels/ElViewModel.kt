@@ -73,7 +73,7 @@ class ElViewModel : ViewModel() {
     fun setTeamSelected(team: Team){
         teamSelected.postValue((team))
     }
-    fun getTeamSelected() = teamSelected
+    fun getTeamSelected() = teamSelected.value
 
     fun getTeamsByCompetition(id: Int) : MutableLiveData<List<Team>?>{
         viewModelScope.launch {

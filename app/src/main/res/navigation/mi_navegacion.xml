@@ -7,5 +7,21 @@
     <fragment
         android:id="@+id/competicionesFragment"
         android:name="com.example.wikifutbol2.ui.fragments.CompeticionesFragment"
-        android:label="CompeticionesFragment" />
+        android:label="CompeticionesFragment" >
+        <action
+            android:id="@+id/action_competicionesFragment_to_teamsListFragment"
+            app:destination="@id/teamsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamsListFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.TeamsListFragment"
+        android:label="TeamsListFragment" >
+        <action
+            android:id="@+id/action_teamsListFragment_to_teamDetailFragment"
+            app:destination="@id/teamDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamDetailFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.TeamDetailFragment"
+        android:label="TeamDetailFragment" />
 </navigation>
