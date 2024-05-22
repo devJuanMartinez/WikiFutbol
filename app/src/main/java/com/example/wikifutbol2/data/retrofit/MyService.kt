@@ -16,9 +16,9 @@ interface MyService {
 
     ): Response<CompeticionesResponse>
 
+    @Headers("X-Auth-Token: 72c4f464c5e64ffa9e11a1d435914ede")
     @GET("persons/{id}")
     suspend fun getPersona(
-        @Header("X-Auth-Token") authtoken : String,
         @Path("id") id : Int
     ) : Response<Persona>
 
