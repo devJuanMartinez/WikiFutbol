@@ -12,7 +12,7 @@ object RetrofitHelper {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val retrofitService by lazy {
+    val retrofitService: MyService by lazy {
         retrofit.create(MyService::class.java)
     }
 }
