@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/img_logoCompetitionPartido"
-        android:layout_width="100dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -17,19 +17,20 @@
 
     <ImageView
         android:id="@+id/img_homeTeamPartido"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:scaleType="fitCenter"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_logoCompetitionPartido"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
         tools:srcCompat="@drawable/ic_launcher_foreground" />
 
     <ImageView
         android:id="@+id/img_awayTeamPartido"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/img_homeTeamPartido"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,16 +41,12 @@
         android:id="@+id/tv_homeScorePartido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:background="#E8E8E8"
         android:padding="5dp"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_homeTeamPartido"
-        app:layout_constraintEnd_toStartOf="@+id/tv_awayScorePartido"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/img_homeTeamPartido"
-        app:layout_constraintTop_toTopOf="@+id/img_homeTeamPartido"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/tv_awayScorePartido"
         tools:text="0" />
 
     <TextView
@@ -60,20 +57,20 @@
         android:background="#E8E8E8"
         android:padding="5dp"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/img_awayTeamPartido"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_homeScorePartido"
-        app:layout_constraintTop_toTopOf="@+id/tv_homeScorePartido"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
         tools:text="0" />
 
     <TextView
         android:id="@+id/tv_fechaPartido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_awayScorePartido"
-        app:layout_constraintStart_toStartOf="@+id/tv_homeScorePartido"
+        app:layout_constraintBottom_toTopOf="@+id/img_homeTeamPartido"
+        app:layout_constraintEnd_toStartOf="@+id/img_awayTeamPartido"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_homeTeamPartido"
         app:layout_constraintTop_toTopOf="@+id/img_homeTeamPartido"
         tools:text="00/00/00" />
 
@@ -113,10 +110,11 @@
         android:layout_height="wrap_content"
         android:text="-"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_awayScorePartido"
-        app:layout_constraintEnd_toStartOf="@+id/tv_awayScorePartido"
-        app:layout_constraintStart_toEndOf="@+id/tv_homeScorePartido"
-        app:layout_constraintTop_toTopOf="@+id/tv_awayScorePartido" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_homeTeamPartido"
+        app:layout_constraintEnd_toStartOf="@+id/img_awayTeamPartido"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toEndOf="@+id/img_homeTeamPartido"
+        app:layout_constraintTop_toTopOf="@+id/img_homeTeamPartido" />
 
     <TextView
         android:id="@+id/tv_jornadaPartido"
@@ -124,8 +122,19 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:text="Jornada"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/img_logoCompetitionPartido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/img_logoCompetitionPartido" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logoCompetitionPartido" />
 </androidx.constraintlayout.widget.ConstraintLayout>

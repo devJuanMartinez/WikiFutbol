@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
+
 }
 
 android {
@@ -54,5 +56,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation (libs.glide)
-
+    implementation(libs.androidsvg)
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
 }
+
+
+

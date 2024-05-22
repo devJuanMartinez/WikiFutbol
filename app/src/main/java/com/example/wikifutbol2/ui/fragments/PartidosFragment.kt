@@ -1,5 +1,6 @@
 package com.example.wikifutbol2.ui.fragments
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,10 @@ import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.example.wikifutbol2.R
 import com.example.wikifutbol2.data.models.partidos.Match
-import com.example.wikifutbol2.data.models.partidos.Partido
 import com.example.wikifutbol2.databinding.FragmentPartidoBinding
 import com.example.wikifutbol2.ui.MainActivity
 import com.example.wikifutbol2.viewmodels.ElViewModel
+import java.io.InputStream
 
 class PartidosFragment : Fragment() {
 
@@ -54,8 +55,10 @@ class PartidosFragment : Fragment() {
         (requireActivity() as MainActivity).supportActionBar?.title = match.homeTeam?.tla + "-" + match.awayTeam?.tla
 
         Glide.with(requireContext()).load(match.competition?.emblem).placeholder(R.drawable.ic_launcher_foreground).into(binding.imgLogoCompetitionPartido)
-        Glide.with(requireContext()).load("https://crests.football-data.org/12.svg").placeholder(R.drawable.ic_launcher_foreground).into(binding.imgHomeTeamPartido)
+        Glide.with(requireContext()).load(match.homeTeam?.crest).placeholder(R.drawable.ic_launcher_foreground).into(binding.imgHomeTeamPartido)
         Glide.with(requireContext()).load(match.awayTeam?.crest).placeholder(R.drawable.ic_launcher_foreground).into(binding.imgAwayTeamPartido)
+
+
 
     }
 }
