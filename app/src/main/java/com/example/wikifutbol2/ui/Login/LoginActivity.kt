@@ -50,8 +50,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun compruebaLogin(user: String, pass: String) {
 
-        var usuario = "usuario"
-        var contrasena = "usuario"
+        val misPreferencias = getSharedPreferences("myprefs", MODE_PRIVATE)
+        val usersaved = misPreferencias.getString("user", "")
+        val passaved = misPreferencias.getString("pass", "")
+
+        var usuario = usersaved.toString()
+        var contrasena = passaved.toString()
 
         if (usuario.isEmpty() && contrasena.isEmpty()) {
             binding.tvUsuarioLogin.error = "El campo está vacío"
