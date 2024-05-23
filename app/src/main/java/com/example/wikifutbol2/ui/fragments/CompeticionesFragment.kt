@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.wikifutbol2.R
 import com.example.wikifutbol2.data.models.Competition
 import com.example.wikifutbol2.databinding.CompeticionesLayoutBinding
 import com.example.wikifutbol2.ui.adapters.CompeticionesAdapter
@@ -36,13 +39,14 @@ class CompeticionesFragment : Fragment() {
             adapter.updateList(it)
         }
     }
+
     private fun configRecycler() {
 
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         adapter = CompeticionesAdapter(object : CompeticionesAdapter.MyClick {
             override fun onHolderClick(competicion: Competition) {
                 viewModel.setCompeticion(competicion)
-//                findNavController().navigate(R.id.)
+                //findNavController().navigate(R.id.action_competicionesFragment_to_equiposFragment)
             }
         })
 
