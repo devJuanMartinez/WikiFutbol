@@ -1,9 +1,6 @@
 [versions]
 agp = "8.3.1"
-<<<<<<< HEAD
 coreSplashscreen = "1.0.1"
-=======
->>>>>>> origin/feature/teams
 glide = "4.16.0"
 kotlin = "1.9.0"
 coreKtx = "1.12.0"
