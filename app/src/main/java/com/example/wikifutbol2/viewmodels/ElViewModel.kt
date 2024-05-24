@@ -79,6 +79,15 @@ class ElViewModel : ViewModel() {
     }
 
     /**
+     * @author Jose Lopez Vilchez
+     * @return referencia al mutable 'ultimaPersonaSeleccionada' definido al principio de la clase
+     *
+     * Un simple getter. Con sobrecarga de funciones. Asi, si le pasas un id, te hace la query o,
+     * si no le pasas nada, solo hace de getter. Simple.
+     */
+    fun getPersona() : MutableLiveData<Persona> = ultimaPersonaSeleccionada
+
+    /**
      * @author David Trillo Gomez
      * @param id referencia a la id del partido, con la cual hace la query a la api
      * @return referencia al mutable 'partidoLiveData' definido al principio de la clase
