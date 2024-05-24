@@ -7,6 +7,7 @@ import com.example.wikifutbol2.data.Repositorio
 import com.example.wikifutbol2.data.models.Competition
 import com.example.wikifutbol2.data.models.partidos.Match
 import com.example.wikifutbol2.data.models.partidos.Partido
+import com.example.wikifutbol2.data.models.equipos.Team
 import com.example.wikifutbol2.data.models.personas.Persona
 import kotlinx.coroutines.launch
 
@@ -26,6 +27,8 @@ class ElViewModel : ViewModel() {
     private val ultimaPersonaSeleccionada = MutableLiveData<Persona>()
     private val partidoLiveData = MutableLiveData<Match>()
     private val listaPartidosLiveData = MutableLiveData<List<Partido>>()
+    private val teamsByCompetition = MutableLiveData<List<Team>?>()
+    private val teamSelected = MutableLiveData<Team>()
 
     //-----------------------------
     //Funciones que alteran los valores de cada mutable
@@ -127,4 +130,23 @@ class ElViewModel : ViewModel() {
      */
 
     fun setListaPartidos() = listaPartidosLiveData
+
+    // Funciones relacionadas con los equipos
+    fun setTeamSelected(team: Team){
+        teamSelected.postValue((team))
+    }
+    fun getTeamSelected() = teamSelected.value
+
+    fun getTeamsByCompetition(id: Int) : MutableLiveData<List<Team>?>{
+        viewModelScope.launch {
+            val response = repositorio.getTeamsByCompetition(id)
+            if(response.code() == 200){
+                val teamsResponse = response.body()
+                teamsResponse?.let {
+                    teamsByCompetition.postValue(it.teams)
+                }
+            }
+        }
+        return teamsByCompetition
+    }
 }

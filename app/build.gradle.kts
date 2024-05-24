@@ -50,10 +50,14 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
+<<<<<<< HEAD
     implementation(libs.androidx.swiperefreshlayout)
     implementation (libs.glide)
     implementation (libs.androidx.core.splashscreen)
 
+=======
+    implementation (libs.glide)
+>>>>>>> origin/feature/teams
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

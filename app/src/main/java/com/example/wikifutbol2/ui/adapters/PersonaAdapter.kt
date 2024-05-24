@@ -25,7 +25,7 @@ class PersonaAdapter(val listado: ArrayList<Persona>) : Adapter<PersonaAdapter.C
         val entrada = listado[position]
 
         with(holder.binding) {
-            //TODO implementar logica
+
         }
 
         holder.itemView.setOnClickListener {
