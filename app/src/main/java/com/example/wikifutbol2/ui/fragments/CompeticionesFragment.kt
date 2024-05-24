@@ -46,7 +46,7 @@ class CompeticionesFragment : Fragment() {
         adapter = CompeticionesAdapter(object : CompeticionesAdapter.MyClick {
             override fun onHolderClick(competicion: Competition) {
                 viewModel.setCompeticion(competicion)
-                //findNavController().navigate(R.id.action_competicionesFragment_to_equiposFragment)
+                findNavController().navigate(R.id.action_competicionesFragment_to_teamsListFragment2)
             }
         })
 
