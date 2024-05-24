@@ -8,7 +8,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wikifutbol2.R
 import com.example.wikifutbol2.databinding.CrearcuentaLayoutBinding
-import com.example.wikifutbol2.databinding.LoginLayoutBinding
 
 
 class CrearCuentaActivity : AppCompatActivity() {
@@ -18,14 +17,8 @@ class CrearCuentaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
         binding = CrearcuentaLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
 
         binding.btCrearCuenta.setOnClickListener {
@@ -43,7 +36,7 @@ class CrearCuentaActivity : AppCompatActivity() {
     }
 
     private fun compruebaCrearCuenta(user: String, pass: String, mail: String) {
-        // Estos if sirven para comprobar si los inputs estan vacios
+//         Estos if sirven para comprobar si los inputs estan vacios
         if (user.isEmpty() && pass.isEmpty() && mail.isEmpty()) {
             binding.tvUsuarioCrearCuenta.error = "El campo está vacío"
             binding.tvContrasenaCrearCuenta.error = "El campo está vacío"
@@ -66,10 +59,23 @@ class CrearCuentaActivity : AppCompatActivity() {
             binding.tvCorreoCrearCuenta.error = "El campo está vacío"
         }
 
+        if (user.isEmpty()){
+            binding.tvUsuarioCrearCuenta.error = "El campo está vacío"
+        }
+        if (pass.isEmpty()){
+            binding.tvContrasenaCrearCuenta.error = "El campo está vacío"
+        }
+        if (mail.isEmpty()){
+            binding.tvCorreoCrearCuenta.error = "El campo está vacío"
+        }
+
+
+
         val misPreferencias = getSharedPreferences("myprefs", MODE_PRIVATE)
         val usersaved = misPreferencias.getString("user", "")
         val passaved = misPreferencias.getString("pass", "")
         val emailsaved = misPreferencias.getString("email", "")
+
 
         if (user.isNotEmpty() && pass.isNotEmpty() && mail.isNotEmpty()) {
             val usersaved = misPreferencias.edit()
@@ -84,6 +90,5 @@ class CrearCuentaActivity : AppCompatActivity() {
             usersaved.putString("email", pass)
             usersaved.apply()
         }
-
     }
 }

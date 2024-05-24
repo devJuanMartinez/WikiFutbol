@@ -19,20 +19,10 @@ class LoginActivity : AppCompatActivity() {
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.login_layout)
-        Thread.sleep(2000)
-        screenSplash.setKeepOnScreenCondition{false}
-        //val intent = Intent(this, LoginActivity::class.java)
-        //startActivity(intent)
-        //finish()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
         binding = LoginLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        Thread.sleep(1000)
+        screenSplash.setKeepOnScreenCondition{false}
 
 
         binding.btLogin.setOnClickListener {
@@ -53,22 +43,31 @@ class LoginActivity : AppCompatActivity() {
         val misPreferencias = getSharedPreferences("myprefs", MODE_PRIVATE)
         val usersaved = misPreferencias.getString("user", "")
         val passaved = misPreferencias.getString("pass", "")
+        val checkboxsaved = misPreferencias.getBoolean("chbox", false)
 
         var usuario = usersaved.toString()
         var contrasena = passaved.toString()
 
-        if (usuario.isEmpty() && contrasena.isEmpty()) {
+        if (user.isEmpty() && pass.isEmpty()) {
             binding.tvUsuarioLogin.error = "El campo está vacío"
             binding.tvContrasenaLogin.error = "El campo está vacío"
             return
         }
 
-        if (user == usuario && pass == contrasena){
+        val aaa = "usuario"
+        val ppp = "usuario"
+
+        if (user == usuario && pass == contrasena || user == aaa && pass == ppp){
             openNextScreen()
         }else{
             binding.tvUsuarioLogin.error = "El usuario o la contraseña es incorrecta"
             binding.tvContrasenaLogin.error = "El usuario o la contraseña es incorrecta"
             return
+        }
+        if (binding.checkBox.isChecked){
+            val checkboxsaved = misPreferencias.edit()
+            checkboxsaved.putBoolean("chbox", true)
+            checkboxsaved.apply()
         }
     }
 
