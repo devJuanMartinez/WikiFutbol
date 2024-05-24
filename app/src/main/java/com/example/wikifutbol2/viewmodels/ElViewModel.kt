@@ -137,6 +137,12 @@ class ElViewModel : ViewModel() {
     }
     fun getTeamSelected() = teamSelected.value
 
+    /**
+     * @author Jose Lopez Vilchez
+     * @return devuelve la referencia al mutable, en vez del valor que contiene, de cara a observarlo
+     */
+    fun getMutTeamSelected() = teamSelected
+
     fun getTeamsByCompetition(id: Int) : MutableLiveData<List<Team>?>{
         viewModelScope.launch {
             val response = repositorio.getTeamsByCompetition(id)

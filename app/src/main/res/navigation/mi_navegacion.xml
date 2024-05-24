@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mi_navegacion"
-    app:startDestination="@id/partidosFragment">
+    app:startDestination="@id/partidosFragment" >
 
     <fragment
         android:id="@+id/competicionesFragment"
         android:name="com.example.wikifutbol2.ui.fragments.CompeticionesFragment"
-<<<<<<< HEAD
         android:label="CompeticionesFragment" />
     <fragment
         android:id="@+id/partidosFragment"
         android:name="com.example.wikifutbol2.ui.fragments.PartidosFragment"
-        android:label="PartidosFragment" />
-=======
-        android:label="CompeticionesFragment" >
+        android:label="PartidosFragment" >
         <action
             android:id="@+id/action_competicionesFragment_to_teamsListFragment"
             app:destination="@id/teamsListFragment" />
@@ -31,5 +29,4 @@
         android:id="@+id/teamDetailFragment"
         android:name="com.example.wikifutbol2.ui.fragments.TeamDetailFragment"
         android:label="TeamDetailFragment" />
->>>>>>> origin/feature/teams
 </navigation>
