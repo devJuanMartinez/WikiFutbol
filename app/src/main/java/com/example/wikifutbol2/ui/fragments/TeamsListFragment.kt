@@ -30,7 +30,7 @@ class TeamsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        configRecicler()
+        configRecicler(2014)
 
     }
 
@@ -39,7 +39,7 @@ class TeamsListFragment : Fragment() {
         val list = viewModel.getTeamsByCompetition(id).value
         val adapter = list?.let {
             MyTeamsAdapter(it, object: MyTeamsAdapter.MyClick{
-                override fun OnHolderClick(team: Team) {
+                override fun onHolderClick(team: Team) {
                     viewModel.setTeamSelected(team)
                     findNavController().navigate(R.id.action_teamsListFragment_to_teamDetailFragment)
                 }

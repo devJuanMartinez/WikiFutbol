@@ -14,7 +14,7 @@ class MyTeamsAdapter(
     ) : RecyclerView.Adapter<MyTeamsAdapter.HolderView>() {
 
     interface MyClick{
-        fun OnHolderClick(team: Team)
+        fun onHolderClick(team: Team)
     }
     inner class HolderView(val binding: HolderTeamsBinding) : ViewHolder(binding.root)
 
@@ -36,5 +36,9 @@ class MyTeamsAdapter(
         holder.binding.tvTeamName.text = equipo.name + " (" + equipo.tla + ")"
         holder.binding.tvCoach.text = equipo.coach?.name
         holder.binding.tvStadium.text = equipo.venue
+
+        holder.itemView.setOnClickListener{
+            listener.onHolderClick(equipo)
+        }
     }
 }
