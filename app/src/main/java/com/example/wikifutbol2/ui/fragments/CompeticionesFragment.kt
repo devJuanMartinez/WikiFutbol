@@ -45,7 +45,7 @@ class CompeticionesFragment : Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         adapter = CompeticionesAdapter(object : CompeticionesAdapter.MyClick {
             override fun onHolderClick(competicion: Competition) {
-                viewModel.setCompeticion(competicion)
+                competicion.id?.let { viewModel.setCompeticion(it) }
                 findNavController().navigate(R.id.action_competicionesFragment_to_teamsListFragment)
             }
         })

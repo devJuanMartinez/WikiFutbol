@@ -14,13 +14,13 @@ interface MyService {
     companion object{
         const val API_KEY = "72c4f464c5e64ffa9e11a1d435914ede"
     }
+    @Headers("X-Auth-Token:$API_KEY")
     @GET("competitions")
-    suspend fun getCompetitions(
-        @Header("X-Auth-Token") authtoken : String,): Response<CompeticionesResponse>
+    suspend fun getCompetitions(): Response<CompeticionesResponse>
 
+    @Headers("X-Auth-Token:$API_KEY")
     @GET("persons/{id}")
     suspend fun getPersona(
-        @Header("X-Auth-Token") authtoken : String,
         @Path("id") id : Int
     ) : Response<Persona>
 

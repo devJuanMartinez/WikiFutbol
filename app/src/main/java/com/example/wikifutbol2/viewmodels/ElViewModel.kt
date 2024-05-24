@@ -21,7 +21,7 @@ class ElViewModel : ViewModel() {
     //Se pueden sacar sus valores con getValue()
 
 
-    private val competicionSeleccionada = MutableLiveData<Competition?>()
+    private val competicionSeleccionada = MutableLiveData<Int>()
     private val ultimaPersonaSeleccionada = MutableLiveData<Persona>()
     private val teamsByCompetition = MutableLiveData<List<Team>?>()
     private val teamSelected = MutableLiveData<Team>()
@@ -49,7 +49,7 @@ class ElViewModel : ViewModel() {
         return competicionesliveData
     }
 
-    fun setCompeticion(competicion: Competition){
+    fun setCompeticion(competicion: Int){
         competicionSeleccionada.value = competicion
     }
     fun getCompetitionSelected() = competicionSeleccionada
@@ -79,7 +79,7 @@ class ElViewModel : ViewModel() {
     fun setTeamSelected(team: Team){
         teamSelected.postValue((team))
     }
-    fun getTeamSelected() = teamSelected.value
+    fun getTeamSelected() = teamSelected
 
     fun getTeamsByCompetition(id: Int) : MutableLiveData<List<Team>?>{
         viewModelScope.launch {

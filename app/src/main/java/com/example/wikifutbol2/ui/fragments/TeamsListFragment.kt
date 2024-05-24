@@ -19,38 +19,43 @@ class TeamsListFragment : Fragment() {
 
     private lateinit var binding : TeamsListLayoutBinding
     private val viewModel by activityViewModels<ElViewModel>()
+    private lateinit var adapter : MyTeamsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        binding = TeamsListLayoutBinding.inflate(inflater, container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getCompetitionSelected().observe(viewLifecycleOwner){competition ->
-            if (competition != null) {
-                competition.id?.let { it -> configRecicler(it) }
-            }
+
+
+        viewModel.getCompetitionSelected().observe(viewLifecycleOwner){
+            configRecicler(it)
         }
 
     }
 
     private fun configRecicler(id :Int){
         val layoutManager = LinearLayoutManager(requireContext())
-        val list = viewModel.getTeamsByCompetition(id).value
-        val adapter = list?.let {
-            MyTeamsAdapter(it, object: MyTeamsAdapter.MyClick{
-                override fun onHolderClick(team: Team) {
-                    viewModel.setTeamSelected(team)
-                    findNavController().navigate(R.id.action_teamsListFragment_to_teamDetailFragment)
-                }
-            })
+
+        viewModel.getTeamsByCompetition(id).observe(viewLifecycleOwner){
+            adapter = it?.let {
+                MyTeamsAdapter(it,requireContext(), object: MyTeamsAdapter.MyClick{
+                    override fun onHolderClick(team: Team) {
+                        viewModel.setTeamSelected(team)
+                        findNavController().navigate(R.id.action_teamsListFragment_to_teamDetailFragment)
+                    }
+                })
+            }!!
+            binding.reciclerView.layoutManager = layoutManager
+            binding.reciclerView.adapter = adapter
         }
-        binding.reciclerView.layoutManager = layoutManager
-        binding.reciclerView.adapter = adapter
+
     }
 
 }
