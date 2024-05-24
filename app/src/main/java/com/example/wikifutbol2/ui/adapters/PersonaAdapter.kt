@@ -53,7 +53,7 @@ class PersonaAdapter(private val viewmodel : ElViewModel, private val lifecycleO
         }
 
         holder.itemView.setOnClickListener {
-            //TODO implementar logica
+            //TODO implementar navegacion
         }
     }
 
