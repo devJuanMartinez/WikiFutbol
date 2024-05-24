@@ -26,7 +26,7 @@ class ElViewModel : ViewModel() {
     private val ultimaPersonaSeleccionada = MutableLiveData<Persona>()
 
     private val partidoLiveData = MutableLiveData<Match>()
-    private val listaPartidosLiveData = MutableLiveData<List<Partido>>()
+    private val listaPartidosLiveData = MutableLiveData<Partido>()
 
     //-----------------------------
     //Funciones que alteran los valores de cada mutable
@@ -77,7 +77,7 @@ class ElViewModel : ViewModel() {
      * @return referencia al mutable 'partidoLiveData' definido al principio de la clase
      */
 
-    fun getPartido(id: Int): MutableLiveData<Match> {
+    fun getPartidoPorId(id: Int): MutableLiveData<Match> {
         viewModelScope.launch {
             val response = repositorio.getPartido(id)
             if (response.code()==200){
@@ -86,6 +86,18 @@ class ElViewModel : ViewModel() {
                 }
             }
         }
+
+        return partidoLiveData
+    }
+
+    /**
+     * @author David Trillo Gomez
+     * @param match referencia al objeto de tipo Match que se quiere establecer como valor de partidoLiveData
+     * @return referencia al mutable 'partidoLiveData' definido al principio de la clase
+     */
+
+    fun getPartido(match: Match): MutableLiveData<Match> {
+        partidoLiveData.value = match
 
         return partidoLiveData
     }
@@ -103,13 +115,14 @@ class ElViewModel : ViewModel() {
      * @return referencia al mutable 'listaPartidosLiveData' definido al principio de la clase
      */
 
-    fun getPartidosAnteriores(id: Int): MutableLiveData<List<Partido>> {
+    fun getPartidosAnteriores(id: Int): MutableLiveData<Partido> {
 
         viewModelScope.launch {
             val response = repositorio.getPartidosAnteriores(id)
             if (response.code()==200){
                 response.body().let {
                     listaPartidosLiveData.postValue(it)
+
                 }
             }
         }

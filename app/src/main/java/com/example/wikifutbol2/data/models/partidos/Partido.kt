@@ -7,7 +7,7 @@ data class Partido(
     @SerializedName("filters")
     var filters: Filters?,
     @SerializedName("matches")
-    var matches: List<Match?>?,
+    var matches: List<Match>?,
     @SerializedName("resultSet")
     var resultSet: ResultSet?
 )

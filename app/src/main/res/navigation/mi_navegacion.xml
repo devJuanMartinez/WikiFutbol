@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mi_navegacion"
-    app:startDestination="@id/partidosFragment">
+    app:startDestination="@id/competicionesFragment">
 
     <fragment
         android:id="@+id/competicionesFragment"
@@ -11,5 +11,9 @@
     <fragment
         android:id="@+id/partidosFragment"
         android:name="com.example.wikifutbol2.ui.fragments.PartidosFragment"
-        android:label="PartidosFragment" />
+        android:label="PartidosFragment" >
+        <action
+            android:id="@+id/action_partidosFragment_self"
+            app:destination="@id/partidosFragment" />
+    </fragment>
 </navigation>

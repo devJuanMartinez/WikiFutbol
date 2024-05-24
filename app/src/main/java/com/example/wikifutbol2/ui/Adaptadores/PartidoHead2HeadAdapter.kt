@@ -1,16 +1,17 @@
 package com.example.wikifutbol2.ui.Adaptadores
 
-import android.service.autofill.FieldClassification.Match
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.wikifutbol2.data.models.partidos.Match
 import com.example.wikifutbol2.databinding.VistaPartidoHead2headBinding
 
-class PartidoHead2HeadAdapter(private val listener : Myclick) : RecyclerView.Adapter<PartidoHead2HeadAdapter.ViewHolder>(){
+class PartidoHead2HeadAdapter(private val context: Context, private val listener : Myclick) : RecyclerView.Adapter<PartidoHead2HeadAdapter.ViewHolder>(){
 
     interface Myclick{
-        fun onHolderClick()
+        fun onHolderClick(match: Match)
     }
 
     private val list = ArrayList<Match>()
@@ -27,16 +28,25 @@ class PartidoHead2HeadAdapter(private val listener : Myclick) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val character =list[position]
+        val partido =list[position]
 
+        holder.binding.tvFechaHead2Head.text = partido.utcDate?.substring(0,10)
+        holder.binding.tvAwayTeamCodeHead2Head.text = partido.awayTeam?.tla
+        holder.binding.tvHomeTeamCodeHead2Head.text = partido.homeTeam?.tla
+        holder.binding.tvScoreAwayTeamHead2Head.text = partido.score?.fullTime?.away.toString()
+        holder.binding.tvScoreHomeTeamHead2Head.text = partido.score?.fullTime?.home.toString()
+
+        Glide.with(context).load(partido.awayTeam?.crest).into(holder.binding.imgAwayTeamHead2Head)
+        Glide.with(context).load(partido.homeTeam?.crest).into(holder.binding.imgHomeTeamHead2Head)
 
         holder.itemView.setOnClickListener {
-            listener.onHolderClick()
+            listener.onHolderClick(partido)
         }
     }
 
-    fun actualizarLista (newList : ArrayList<Match>){
+    fun actualizarLista (newList : List<Match>){
         list.clear()
         list.addAll(newList)
+        notifyDataSetChanged()
     }
 }

@@ -24,8 +24,7 @@
             android:id="@+id/tv_usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:text="invitado" />
+            android:background="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -44,8 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:hint="Contraseña"
-            android:text="estech1234" />
+            android:hint="Contraseña" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
