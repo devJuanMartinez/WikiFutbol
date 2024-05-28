@@ -26,5 +26,12 @@
         android:id="@+id/teamDetailFragment"
         android:name="com.example.wikifutbol2.ui.fragments.TeamDetailFragment"
         android:label="TeamDetailFragment" />
-
+    <fragment
+        android:id="@+id/partidosFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.PartidosFragment"
+        android:label="PartidosFragment" >
+        <action
+            android:id="@+id/action_partidosFragment_self"
+            app:destination="@id/partidosFragment" />
+    </fragment>
 </navigation>

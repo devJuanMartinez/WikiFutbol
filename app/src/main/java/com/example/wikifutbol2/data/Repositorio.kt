@@ -8,7 +8,12 @@ import retrofit2.Response
 class Repositorio {
 
     suspend fun getCompetitions() = RetrofitHelper.retrofitService.getCompetitions()
+
     suspend fun getPersona(id : Int) : Response<Persona> = RetrofitHelper.retrofitService.getPersona(id)
 
     suspend fun getTeamsByCompetition(id : Int) : Response<ResponseTeams> = RetrofitHelper.retrofitService.getTeamsByCompetition(id)
+
+    suspend fun getPartido(id: Int) = RetrofitHelper.retrofitService.getPartido(id)
+
+    suspend fun getPartidosAnteriores(id: Int) = RetrofitHelper.retrofitService.getPartidosAnteriores(id)
 }
