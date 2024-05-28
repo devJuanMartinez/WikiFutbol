@@ -12,6 +12,8 @@ import com.example.wikifutbol2.R
 import com.example.wikifutbol2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
@@ -26,4 +28,5 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHost
         navController = navHost.navController
     }
+
 }
