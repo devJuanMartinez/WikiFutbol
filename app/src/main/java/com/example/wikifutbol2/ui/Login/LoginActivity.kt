@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
         }
         if (binding.checkBox.isChecked){
             val checkboxsaved = misPreferencias.edit()
-            checkboxsaved.putBoolean("chbox", true)
+            checkboxsaved.putBoolean ("chbox", true)
             checkboxsaved.apply()
         }
     }

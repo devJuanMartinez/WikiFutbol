@@ -32,7 +32,8 @@
             android:id="@+id/tv_usuarioLogin"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:hint="Usuario" />
+            android:hint="Usuario"
+            android:text="usuario" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -49,7 +50,8 @@
             android:id="@+id/tv_contrasenaLogin"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:hint="Contraseña" />
+            android:hint="Contraseña"
+            android:text="usuario" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox

@@ -25,7 +25,11 @@
     <fragment
         android:id="@+id/teamDetailFragment"
         android:name="com.example.wikifutbol2.ui.fragments.TeamDetailFragment"
-        android:label="TeamDetailFragment" />
+        android:label="TeamDetailFragment" >
+        <action
+            android:id="@+id/action_teamDetailFragment_to_partidosFragment"
+            app:destination="@id/partidosFragment" />
+    </fragment>
     <fragment
         android:id="@+id/partidosFragment"
         android:name="com.example.wikifutbol2.ui.fragments.PartidosFragment"
@@ -33,5 +37,8 @@
         <action
             android:id="@+id/action_partidosFragment_self"
             app:destination="@id/partidosFragment" />
+        <action
+            android:id="@+id/action_partidosFragment_to_teamsListFragment"
+            app:destination="@id/teamsListFragment" />
     </fragment>
 </navigation>

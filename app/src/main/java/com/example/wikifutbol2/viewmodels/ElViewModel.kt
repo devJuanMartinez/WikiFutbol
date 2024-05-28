@@ -1,5 +1,7 @@
 package com.example.wikifutbol2.viewmodels
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -34,7 +36,7 @@ class ElViewModel : ViewModel() {
 
     private val partidoLiveData = MutableLiveData<Match>()
     private val listaPartidosLiveData = MutableLiveData<Partido>()
-
+    private val historialPartidoLiveData = MutableLiveData<Partido>()
     //-----------------------------
     //Funciones que alteran los valores de cada mutable
 
@@ -104,6 +106,8 @@ class ElViewModel : ViewModel() {
         return teamsByCompetition
     }
 
+    //Funciones relacionadas con los partidos
+
     /**
      * @author David Trillo Gomez
      * @param id referencia a la id del partido, con la cual hace la query a la api
@@ -130,7 +134,7 @@ class ElViewModel : ViewModel() {
      */
 
     fun getPartido(match: Match): MutableLiveData<Match> {
-        partidoLiveData.value = match
+        partidoLiveData.postValue(match)
 
         return partidoLiveData
     }
@@ -145,7 +149,7 @@ class ElViewModel : ViewModel() {
     /**
      * @author David Trillo Gomez
      * @param id referencia a la id del partido, con la cual hace la query a la api
-     * @return referencia al mutable 'listaPartidosLiveData' definido al principio de la clase
+     * @return referencia al mutable 'historialPartidoLiveData' definido al principio de la clase
      */
 
     fun getPartidosAnteriores(id: Int): MutableLiveData<Partido> {
@@ -154,13 +158,13 @@ class ElViewModel : ViewModel() {
             val response = repositorio.getPartidosAnteriores(id)
             if (response.code()==200){
                 response.body().let {
-                    listaPartidosLiveData.postValue(it)
+                    historialPartidoLiveData.postValue(it)
 
                 }
             }
         }
 
-        return listaPartidosLiveData
+        return historialPartidoLiveData
     }
 
     /**
@@ -169,5 +173,25 @@ class ElViewModel : ViewModel() {
      */
 
     fun setListaPartidos() = listaPartidosLiveData
+
+    /**
+     * @author David Trillo Gomez
+     * @param id referencia a la id del equipo, con la cual hace la query a la api
+     * @return referencia al mutable 'listaPartidosLiveData' definido al principio de la clase
+     */
+
+    fun getPartidosByEquipoId(id: Int): MutableLiveData<Partido> {
+
+        viewModelScope.launch {
+            val response = repositorio.getPartidosByEquipoId(id)
+            if (response.code() == 200) {
+                response.body().let {
+                    listaPartidosLiveData.postValue(it)
+
+                }
+            }
+        }
+        return listaPartidosLiveData
+    }
 
 }

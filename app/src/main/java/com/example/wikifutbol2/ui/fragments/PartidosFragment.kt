@@ -1,6 +1,4 @@
 package com.example.wikifutbol2.ui.fragments
-
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +7,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.wikifutbol2.R
 import com.example.wikifutbol2.data.models.partidos.Match
-import com.example.wikifutbol2.data.models.partidos.Partido
 import com.example.wikifutbol2.databinding.FragmentPartidoBinding
 import com.example.wikifutbol2.ui.Adaptadores.PartidoHead2HeadAdapter
 import com.example.wikifutbol2.ui.MainActivity
@@ -43,9 +39,11 @@ class PartidosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        myViewModel.getPartidoPorId(441789).observe(viewLifecycleOwner){
+        myViewModel.setPartido().observe(viewLifecycleOwner){
             fillData(it)
         }
+
+
 
 
     }
@@ -54,8 +52,11 @@ class PartidosFragment : Fragment() {
 
         binding.tvFechaPartido.text = match.utcDate?.substring(0,10)
 
-        binding.tvHomeScorePartido.text = match.score?.fullTime?.home.toString()
-        binding.tvAwayScorePartido.text = match.score?.fullTime?.away.toString()
+        if (match.status=="FINISHED"){
+            binding.tvHomeScorePartido.text = match.score?.fullTime?.home.toString()
+            binding.tvAwayScorePartido.text = match.score?.fullTime?.away.toString()
+        }
+
 
         binding.tvAwayTeamPartido.text = match.awayTeam?.name
         binding.tvHomeTeamPartido.text = match.homeTeam?.name
@@ -76,7 +77,9 @@ class PartidosFragment : Fragment() {
         adapter = PartidoHead2HeadAdapter(requireContext(), object : PartidoHead2HeadAdapter.Myclick{
             override fun onHolderClick(match: Match) {
 
-                myViewModel.getPartido(match)
+                myViewModel.getPartido(match).observe(viewLifecycleOwner){
+                    it.id?.let { it1 -> myViewModel.getPartidosAnteriores(it1) }
+                }
                 findNavController().navigate(R.id.action_partidosFragment_self)
             }
 
@@ -96,9 +99,20 @@ class PartidosFragment : Fragment() {
         }
 
 
+        binding.imgLogoCompetitionPartido.setOnClickListener{
+            match.competition?.id?.let { id ->
+                myViewModel.setCompeticion(id)
+            }
+            findNavController().navigate(R.id.action_partidosFragment_to_teamsListFragment)
+        }
 
 
 
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
 
 
     }

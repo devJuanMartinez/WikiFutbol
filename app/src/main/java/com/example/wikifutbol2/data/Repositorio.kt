@@ -15,5 +15,7 @@ class Repositorio {
 
     suspend fun getPartido(id: Int) = RetrofitHelper.retrofitService.getPartido(id)
 
+    suspend fun getPartidosByEquipoId(id: Int) = RetrofitHelper.retrofitService.getPartidosByEquipoId(id)
+
     suspend fun getPartidosAnteriores(id: Int) = RetrofitHelper.retrofitService.getPartidosAnteriores(id)
 }

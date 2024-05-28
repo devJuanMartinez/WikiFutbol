@@ -44,6 +44,12 @@ interface MyService {
         @Path("id") id: Int
     ) : Response<Partido>
 
+    @Headers("X-Auth-Token: $API_KEY")
+    @GET("teams/{id}/matches")
+    suspend fun getPartidosByEquipoId(
+        @Path("id") id: Int
+    ) : Response<Partido>
+
 
 
 }
