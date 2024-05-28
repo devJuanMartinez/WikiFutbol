@@ -5,15 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondoinicios"
+    android:background="@drawable/fondologin"
     tools:context=".ui.Login.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="190dp"
         android:layout_height="190dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logofragments" />
@@ -22,7 +23,7 @@
         android:id="@+id/textInputLayout1"
         android:layout_width="360dp"
         android:layout_height="54dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,6 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:text="Recordar Contraseña"
-        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 

@@ -26,11 +26,6 @@ class ElViewModel : ViewModel() {
     //-----------------------------
     //Funciones que alteran los valores de cada mutable
 
-    /**
-     * @author Jose Lopez Vilchez
-     * @return referencia al mutable 'competiciones' definido al principio de la clase
-     */
-
     fun getCompetitions() : MutableLiveData<List<Competition?>> {
         val competicionesliveData = MutableLiveData<List<Competition?>>()
         viewModelScope.launch {

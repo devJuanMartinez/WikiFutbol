@@ -5,11 +5,10 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.wikifutbol2.ui.MainActivity
 import com.example.wikifutbol2.R
 import com.example.wikifutbol2.databinding.LoginLayoutBinding
+import com.example.wikifutbol2.ui.MainActivity
+import com.example.wikifutbol2.ui.fragments.HomeFragment
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,6 +27,22 @@ class LoginActivity : AppCompatActivity() {
         binding.btLogin.setOnClickListener {
             val user = binding.tvUsuarioLogin.text.toString()
             val pass = binding.tvContrasenaLogin.text.toString()
+
+//            val pasaruser = user.toString()
+//            val intent: Intent = Intent(this, HomeFragment::class.java).apply {
+//                putExtra(pasaruser, user)
+//            }
+
+            val fmanager = supportFragmentManager
+            val fmanagertrans = fmanager.beginTransaction()
+            val fragment = HomeFragment()
+            val bundle = Bundle()
+            bundle.putString("User", user)
+            fragment.arguments = bundle
+            fmanagertrans.add(R.id.fragmentContainerView, fragment).commit()
+
+
+
             compruebaLogin(user, pass)
         }
 
