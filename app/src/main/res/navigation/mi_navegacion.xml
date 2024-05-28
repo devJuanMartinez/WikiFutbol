@@ -28,5 +28,13 @@
     <fragment
         android:id="@+id/teamDetailFragment"
         android:name="com.example.wikifutbol2.ui.fragments.TeamDetailFragment"
-        android:label="TeamDetailFragment" />
+        android:label="TeamDetailFragment" >
+        <action
+            android:id="@+id/action_teamDetailFragment_to_detallePersonaFragment"
+            app:destination="@id/detallePersonaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detallePersonaFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.DetallePersonaFragment"
+        android:label="DetallePersonaFragment" />
 </navigation>

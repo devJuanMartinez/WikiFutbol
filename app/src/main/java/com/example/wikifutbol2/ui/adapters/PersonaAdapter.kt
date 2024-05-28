@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.wikifutbol2.R
@@ -54,7 +55,7 @@ class PersonaAdapter(private val viewmodel : ElViewModel, private val lifecycleO
 
         holder.itemView.setOnClickListener {
             entrada?.id?.let { valor -> viewmodel.getPersona(valor) }
-            //TODO implementar navegacion
+            Navigation.findNavController(it).navigate(R.id.action_teamDetailFragment_to_detallePersonaFragment)
         }
     }
 

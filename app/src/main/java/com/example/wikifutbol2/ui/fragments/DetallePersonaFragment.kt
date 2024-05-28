@@ -42,19 +42,13 @@ class DetallePersonaFragment : Fragment() {
 
         with(binding) {
 
-            /*Glide.with()
-                .load()
-                .into()
+            Glide.with(requireContext())
+                .load(persona.currentTeam.crest)
+                .into(imagenescudo)
 
-            Glide.with()
-                .load()
-                .into()*/
-
-            imagenpersona
             imagenescudo
             costal.text = persona.shirtNumber.toString()
             nombre.text = persona.name
-            posicion.text = persona.position
             nacionalidad.text = persona.nationality
             nacimiento.text = persona.dateOfBirth
             iniciocontrato.text = persona.currentTeam.contract.start
