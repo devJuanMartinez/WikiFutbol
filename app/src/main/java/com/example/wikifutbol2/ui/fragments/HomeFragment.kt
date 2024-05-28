@@ -26,9 +26,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
 
-        val bundle = arguments
-        val user = bundle?.getString("User")
-        binding.nombrehome.text = user
+        val misPreferencias = requireContext().getSharedPreferences("myprefs", AppCompatActivity.MODE_PRIVATE)
+        val usersaved = misPreferencias.getString("user", "")
+
+        binding.nombrehome.text = usersaved
 
         binding.btCompeticiones.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_competicionesFragment)

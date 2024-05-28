@@ -28,21 +28,6 @@ class LoginActivity : AppCompatActivity() {
             val user = binding.tvUsuarioLogin.text.toString()
             val pass = binding.tvContrasenaLogin.text.toString()
 
-//            val pasaruser = user.toString()
-//            val intent: Intent = Intent(this, HomeFragment::class.java).apply {
-//                putExtra(pasaruser, user)
-//            }
-
-            val fmanager = supportFragmentManager
-            val fmanagertrans = fmanager.beginTransaction()
-            val fragment = HomeFragment()
-            val bundle = Bundle()
-            bundle.putString("User", user)
-            fragment.arguments = bundle
-            fmanagertrans.add(R.id.fragmentContainerView, fragment).commit()
-
-
-
             compruebaLogin(user, pass)
         }
 
