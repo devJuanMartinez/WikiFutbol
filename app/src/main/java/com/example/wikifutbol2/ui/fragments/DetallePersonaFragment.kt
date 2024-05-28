@@ -13,6 +13,12 @@ import com.example.wikifutbol2.data.models.personas.Persona
 import com.example.wikifutbol2.databinding.DetallepersonaBinding
 import com.example.wikifutbol2.viewmodels.ElViewModel
 
+/**
+ * @author Jose Lopez Vilchez
+ *
+ * Fragment muy sencillo. Simplemente observa el viewmodel y lanza una funcion
+ * para rellenar con datos cada apartado. No tiene mas.
+ */
 class DetallePersonaFragment : Fragment() {
 
     private var _binding : DetallepersonaBinding? = null
