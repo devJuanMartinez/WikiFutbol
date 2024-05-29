@@ -44,7 +44,7 @@ class PartidoHead2HeadAdapter(private val context: Context, private val listener
         }
     }
 
-    fun actualizarLista (newList : List<Match>){
+    fun actualizarLista (newList: List<Match>){
         list.clear()
         list.addAll(newList)
         notifyDataSetChanged()

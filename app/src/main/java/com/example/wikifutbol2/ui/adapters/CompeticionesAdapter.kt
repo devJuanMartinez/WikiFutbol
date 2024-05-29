@@ -43,13 +43,15 @@ class CompeticionesAdapter(private val listener: MyClick) : RecyclerView.Adapter
 
         holder.itemView.setOnClickListener {
 
-            listener.onHolderClick(competicion)
-        }
-    
-
             if (competicion != null) {
                 listener.onHolderClick(competicion)
             }
+        }
+    
+
+//            if (competicion != null) {
+//                listener.onHolderClick(competicion)
+//            }
         
     }
 

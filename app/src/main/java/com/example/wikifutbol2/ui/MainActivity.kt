@@ -1,6 +1,7 @@
 package com.example.wikifutbol2.ui
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
@@ -33,9 +34,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-        setSupportActionBar(binding.toolbar)
-
-        val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHost
-        navController = navHost.navController
-    }
+//        val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHost
+//        navController = navHost.navController
 }

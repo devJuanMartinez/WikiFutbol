@@ -5,13 +5,10 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.wikifutbol2.ui.MainActivity
 import com.example.wikifutbol2.R
 import com.example.wikifutbol2.databinding.LoginLayoutBinding
+import com.example.wikifutbol2.ui.MainActivity
 import com.example.wikifutbol2.ui.fragments.HomeFragment
-
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,19 +18,6 @@ class LoginActivity : AppCompatActivity() {
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        Thread.sleep(2000)
-        screenSplash.setKeepOnScreenCondition{false}
-        //val intent = Intent(this, LoginActivity::class.java)
-        //startActivity(intent)
-        //finish()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-
         binding = LoginLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Thread.sleep(1000)
@@ -56,12 +40,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun compruebaLogin(user: String, pass: String) {
 
-
-        var usuario = "usuario"
-        var contrasena = "usuario"
-
-        if (usuario.isEmpty() && contrasena.isEmpty()) {
-
         val misPreferencias = getSharedPreferences("myprefs", MODE_PRIVATE)
         val usersaved = misPreferencias.getString("user", "")
         val passaved = misPreferencias.getString("pass", "")
@@ -71,7 +49,6 @@ class LoginActivity : AppCompatActivity() {
         var contrasena = passaved.toString()
 
         if (user.isEmpty() && pass.isEmpty()) {
-
             binding.tvUsuarioLogin.error = "El campo está vacío"
             binding.tvContrasenaLogin.error = "El campo está vacío"
             return

@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mi_navegacion"
+    android:id="@+id/my_navigation"
     app:startDestination="@id/homeFragment">
 
-    <fragment
-        android:id="@+id/competicionesFragment"
-        android:name="com.example.wikifutbol2.ui.fragments.CompeticionesFragment"
-
-
-        android:label="CompeticionesFragment" />
-    <activity
-        android:id="@+id/loginActivity"
-        android:name="com.example.wikifutbol2.ui.Login.LoginActivity"
-        android:label="login_layout"
-        tools:layout="@layout/login_layout" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.wikifutbol2.ui.fragments.HomeFragment"
@@ -24,9 +11,11 @@
         <action
             android:id="@+id/action_homeFragment_to_competicionesFragment"
             app:destination="@id/competicionesFragment" />
-
-        android:label="CompeticionesFragment">
-
+    </fragment>
+    <fragment
+        android:id="@+id/competicionesFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.CompeticionesFragment"
+        android:label="CompeticionesFragment" >
         <action
             android:id="@+id/action_competicionesFragment_to_teamsListFragment"
             app:destination="@id/teamsListFragment" />
@@ -34,7 +23,7 @@
     <fragment
         android:id="@+id/teamsListFragment"
         android:name="com.example.wikifutbol2.ui.fragments.TeamsListFragment"
-        android:label="TeamsListFragment">
+        android:label="TeamsListFragment" >
         <action
             android:id="@+id/action_teamsListFragment_to_teamDetailFragment"
             app:destination="@id/teamDetailFragment" />
@@ -44,13 +33,12 @@
         android:name="com.example.wikifutbol2.ui.fragments.TeamDetailFragment"
         android:label="TeamDetailFragment" >
         <action
+            android:id="@+id/action_teamDetailFragment_to_partidosFragment"
+            app:destination="@id/partidosFragment" />
+        <action
             android:id="@+id/action_teamDetailFragment_to_detallePersonaFragment"
             app:destination="@id/detallePersonaFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/detallePersonaFragment"
-        android:name="com.example.wikifutbol2.ui.fragments.DetallePersonaFragment"
-        android:label="DetallePersonaFragment" />
     <fragment
         android:id="@+id/partidosFragment"
         android:name="com.example.wikifutbol2.ui.fragments.PartidosFragment"
@@ -59,4 +47,8 @@
             android:id="@+id/action_partidosFragment_self"
             app:destination="@id/partidosFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detallePersonaFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.DetallePersonaFragment"
+        android:label="DetallePersonaFragment" />
 </navigation>

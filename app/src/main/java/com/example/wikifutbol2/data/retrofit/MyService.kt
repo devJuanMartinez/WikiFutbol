@@ -4,8 +4,6 @@ import com.example.wikifutbol2.data.models.CompeticionesResponse
 import com.example.wikifutbol2.data.models.partidos.Match
 import com.example.wikifutbol2.data.models.partidos.Partido
 import com.example.wikifutbol2.data.models.equipos.ResponseTeams
-import com.example.wikifutbol2.data.models.partidos.Match
-import com.example.wikifutbol2.data.models.partidos.Partido
 import com.example.wikifutbol2.data.models.personas.Persona
 import retrofit2.Response
 import retrofit2.http.GET
@@ -41,7 +39,7 @@ interface MyService {
     @GET("matches/{id}/head2head")
     suspend fun getPartidosAnteriores(
         @Path("id") id : Int
-    ) : Response<List<Partido>>
+    ) : Response<Partido>
 
     @Headers("X-Auth-Token:$API_KEY")
     @GET("competitions/{id}/teams")
