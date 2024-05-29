@@ -3,11 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mi_navegacion"
-    app:startDestination="@id/competicionesFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/competicionesFragment"
         android:name="com.example.wikifutbol2.ui.fragments.CompeticionesFragment"
+
+        android:label="CompeticionesFragment" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.wikifutbol2.ui.Login.LoginActivity"
+        android:label="login_layout"
+        tools:layout="@layout/login_layout" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_competicionesFragment"
+            app:destination="@id/competicionesFragment" />
+
         android:label="CompeticionesFragment">
 
         <action
@@ -33,5 +48,6 @@
         <action
             android:id="@+id/action_partidosFragment_self"
             app:destination="@id/partidosFragment" />
+
     </fragment>
 </navigation>

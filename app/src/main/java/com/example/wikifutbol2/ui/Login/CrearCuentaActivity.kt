@@ -37,6 +37,8 @@ class CrearCuentaActivity : AppCompatActivity() {
 
     private fun compruebaCrearCuenta(user: String, pass: String, mail: String) {
 
+//         Estos if sirven para comprobar si los inputs estan vacios
+
         if (user.isEmpty()){
             binding.tvUsuarioCrearCuenta.error = "El campo está vacío"
         }
@@ -67,6 +69,10 @@ class CrearCuentaActivity : AppCompatActivity() {
             val emailsaved = misPreferencias.edit()
             usersaved.putString("email", pass)
             usersaved.apply()
+
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
