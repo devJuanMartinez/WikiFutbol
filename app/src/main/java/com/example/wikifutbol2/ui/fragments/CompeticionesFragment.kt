@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.wikifutbol2.R
 import com.example.wikifutbol2.data.models.Competition
 import com.example.wikifutbol2.databinding.CompeticionesLayoutBinding
 import com.example.wikifutbol2.ui.adapters.CompeticionesAdapter
@@ -19,6 +23,11 @@ class CompeticionesFragment : Fragment() {
 
     private val viewModel by activityViewModels<ElViewModel>()
 
+
+
+    private lateinit var adapter: CompeticionesAdapter
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +38,7 @@ class CompeticionesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
+
         //configRecycler()
         viewModel.getCompetitions().observe(viewLifecycleOwner){
 
@@ -45,10 +55,36 @@ class CompeticionesFragment : Fragment() {
         //})
     }
 
-    //override fun onDestroyView() {
-       // super.onDestroyView()
-       // _binding = null
-    //}
+    
+
+        configRecycler()
+        viewModel.getCompetitions().observe(viewLifecycleOwner){
+            adapter.updateList(it)
+        }
+    }
+
+    private fun configRecycler() {
+
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        adapter = CompeticionesAdapter(object : CompeticionesAdapter.MyClick {
+            override fun onHolderClick(competicion: Competition) {
+
+                viewModel.setCompeticion(competicion)
+
+                competicion.id?.let { viewModel.setCompeticion(it) }
+                findNavController().navigate(R.id.action_competicionesFragment_to_teamsListFragment)
+
+            }
+        })
+
+        binding.recyclerView.adapter = adapter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
 
 

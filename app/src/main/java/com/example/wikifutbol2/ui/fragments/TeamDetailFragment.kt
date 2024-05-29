@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.wikifutbol2.data.models.equipos.Team
 import com.example.wikifutbol2.databinding.TeamDetailsFragmentBinding
 import com.example.wikifutbol2.ui.adapters.PersonaAdapter
@@ -24,22 +25,28 @@ class TeamDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        binding = TeamDetailsFragmentBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val team = viewModel.getTeamSelected()
-        if (team != null) {
-            fillTeamDetails(team)
+        viewModel.getTeamSelected().observe(viewLifecycleOwner){
+            fillTeamDetails(it)
         }
+
 
         // Te dejo el tema de rellenar el recyclerview de jugadores apartadillo del resto :)
         configuracionRecyclerJugadores()
+
+
+
     }
 
     private fun fillTeamDetails(team: Team){
+
+        Glide.with(requireContext()).load(team.crest).into(binding.ivTeamCrest)
         binding.tvTeamDetName.text = team.name
         binding.tvTla.text = team.tla
         binding.tvShortName.text = team.shortName
