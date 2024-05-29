@@ -3,7 +3,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -15,7 +14,6 @@ import com.example.wikifutbol2.databinding.FragmentPartidoBinding
 import com.example.wikifutbol2.ui.Adaptadores.PartidoHead2HeadAdapter
 import com.example.wikifutbol2.ui.MainActivity
 import com.example.wikifutbol2.viewmodels.ElViewModel
-import java.io.InputStream
 
 class PartidosFragment : Fragment() {
 
@@ -42,10 +40,6 @@ class PartidosFragment : Fragment() {
         myViewModel.setPartido().observe(viewLifecycleOwner){
             fillData(it)
         }
-
-
-
-
     }
 
     private fun fillData(match: Match){
@@ -106,14 +100,15 @@ class PartidosFragment : Fragment() {
             findNavController().navigate(R.id.action_partidosFragment_to_teamsListFragment)
         }
 
+        binding.imgHomeTeamPartido.setOnClickListener{
+            match.homeTeam?.id?.let { it1 -> myViewModel.getTeamById(it1) }
+            findNavController().navigate(R.id.action_partidosFragment_to_teamDetailFragment)
+        }
 
-
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
+        binding.imgAwayTeamPartido.setOnClickListener{
+            match.awayTeam?.id?.let { it1 -> myViewModel.getTeamById(it1) }
+            findNavController().navigate(R.id.action_partidosFragment_to_teamDetailFragment)
+        }
 
     }
 }

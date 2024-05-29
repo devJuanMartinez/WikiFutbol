@@ -106,6 +106,20 @@ class ElViewModel : ViewModel() {
         return teamsByCompetition
     }
 
+    fun getTeamById(id: Int): MutableLiveData<Team>{
+        viewModelScope.launch {
+
+            val response = repositorio.getTeamById(id)
+            if(response.code() == 200){
+                response.body()?.let {
+                    teamSelected.postValue(it)
+                }
+            }
+        }
+        return teamSelected
+    }
+
+
     //Funciones relacionadas con los partidos
 
     /**
@@ -193,5 +207,4 @@ class ElViewModel : ViewModel() {
         }
         return listaPartidosLiveData
     }
-
 }

@@ -2,6 +2,7 @@ package com.example.wikifutbol2.data.retrofit
 
 import com.example.wikifutbol2.data.models.CompeticionesResponse
 import com.example.wikifutbol2.data.models.equipos.ResponseTeams
+import com.example.wikifutbol2.data.models.equipos.Team
 import com.example.wikifutbol2.data.models.partidos.Match
 import com.example.wikifutbol2.data.models.partidos.Partido
 import com.example.wikifutbol2.data.models.personas.Persona
@@ -31,6 +32,12 @@ interface MyService {
     suspend fun getTeamsByCompetition(
         @Path("id") id : Int
     ) : Response<ResponseTeams>
+
+    @Headers("X-Auth-Token:$API_KEY")
+    @GET("teams/{id}")
+    suspend fun getTeamsById(
+        @Path("id") id : Int
+    ) : Response<Team>
 
     @Headers("X-Auth-Token: $API_KEY")
     @GET("matches/{id}")
