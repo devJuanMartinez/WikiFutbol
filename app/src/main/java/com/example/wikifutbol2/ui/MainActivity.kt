@@ -1,7 +1,6 @@
 package com.example.wikifutbol2.ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
@@ -19,9 +18,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        enableEdgeToEdge()
+       
 
         setSupportActionBar(binding.toolbar)
 
@@ -29,4 +32,10 @@ class MainActivity : AppCompatActivity() {
         navController = navHost.navController
     }
 
+
+        setSupportActionBar(binding.toolbar)
+
+        val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHost
+        navController = navHost.navController
+    }
 }
