@@ -3,12 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_logoCompetitionPartido"
+        android:layout_width="100dp"
+
     android:layout_height="match_parent"
     android:background="#F4f4f4">
 
     <ImageView
         android:id="@+id/img_logoCompetitionPartido"
         android:layout_width="65dp"
+
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -18,6 +26,7 @@
 
     <ImageView
         android:id="@+id/img_homeTeamPartido"
+
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginStart="16dp"
@@ -26,10 +35,12 @@
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
+
         tools:srcCompat="@drawable/ic_launcher_foreground" />
 
     <ImageView
         android:id="@+id/img_awayTeamPartido"
+
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginEnd="16dp"
@@ -75,17 +86,28 @@
         app:layout_constraintEnd_toStartOf="@+id/img_awayTeamPartido"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/img_homeTeamPartido"
+
         app:layout_constraintTop_toTopOf="@+id/img_homeTeamPartido"
         tools:text="00/00/00" />
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/recyclerViewHead2Head"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_homeTeamCodePartido" />
+
+    <TextView
+        android:id="@+id/tv_homeTeamCodePartido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
         app:layout_constraintTop_toBottomOf="@+id/tv_homeTeamCodePartido"
         app:layout_constraintVertical_bias="0.4" />
 
