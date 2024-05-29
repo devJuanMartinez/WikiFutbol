@@ -8,6 +8,7 @@
     <fragment
         android:id="@+id/competicionesFragment"
         android:name="com.example.wikifutbol2.ui.fragments.CompeticionesFragment"
+
         android:label="CompeticionesFragment" />
     <activity
         android:id="@+id/loginActivity"
@@ -21,5 +22,32 @@
         <action
             android:id="@+id/action_homeFragment_to_competicionesFragment"
             app:destination="@id/competicionesFragment" />
+
+        android:label="CompeticionesFragment">
+
+        <action
+            android:id="@+id/action_competicionesFragment_to_teamsListFragment"
+            app:destination="@id/teamsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamsListFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.TeamsListFragment"
+        android:label="TeamsListFragment">
+        <action
+            android:id="@+id/action_teamsListFragment_to_teamDetailFragment"
+            app:destination="@id/teamDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamDetailFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.TeamDetailFragment"
+        android:label="TeamDetailFragment" />
+    <fragment
+        android:id="@+id/partidosFragment"
+        android:name="com.example.wikifutbol2.ui.fragments.PartidosFragment"
+        android:label="PartidosFragment" >
+        <action
+            android:id="@+id/action_partidosFragment_self"
+            app:destination="@id/partidosFragment" />
+
     </fragment>
 </navigation>
