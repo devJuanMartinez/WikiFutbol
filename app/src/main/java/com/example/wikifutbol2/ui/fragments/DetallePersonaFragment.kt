@@ -52,8 +52,12 @@ class DetallePersonaFragment : Fragment() {
                 .load(persona.currentTeam.crest)
                 .into(imagenescudo)
 
-            imagenescudo
-            costal.text = persona.shirtNumber.toString()
+            if (persona.shirtNumber.toString().isNullOrBlank() || persona.shirtNumber <= 0) {
+                costal.text = " "
+            } else {
+                costal.text = persona.shirtNumber.toString()
+            }
+
             nombre.text = persona.name
             nacionalidad.text = persona.nationality
             nacimiento.text = persona.dateOfBirth
@@ -68,5 +72,4 @@ class DetallePersonaFragment : Fragment() {
             }
         }
     }
-
 }
