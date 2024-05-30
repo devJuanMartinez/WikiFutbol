@@ -24,16 +24,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
        
 
         setSupportActionBar(binding.toolbar)
 
+        binding.toolbar.setTitleTextColor(getColor(R.color.title_color))
+
+
+
         val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHost
         navController = navHost.navController
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
 
-//        val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHost
-//        navController = navHost.navController
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
+    }
 }

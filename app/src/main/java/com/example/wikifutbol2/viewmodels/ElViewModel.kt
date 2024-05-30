@@ -180,6 +180,19 @@ class ElViewModel : ViewModel() {
             return teamsByCompetition
         }
 
+    fun getTeamById(id: Int): MutableLiveData<Team>{
+        viewModelScope.launch {
+
+            val response = repositorio.getTeamById(id)
+            if(response.code() == 200){
+                response.body()?.let {
+                    teamSelected.postValue(it)
+                }
+            }
+        }
+        return teamSelected
+    }
+
         /**
          * @author David Trillo Gomez
          * @param id referencia a la id del partido, con la cual hace la query a la api
@@ -217,6 +230,26 @@ class ElViewModel : ViewModel() {
          */
 
         fun setPartido() = partidoLiveData
+
+    /**
+     * @author David Trillo Gomez
+     * @param id referencia a la id del equipo, con la cual hace la query a la api
+     * @return referencia al mutable 'listaPartidosLiveData' definido al principio de la clase
+     */
+
+    fun getPartidosByEquipoId(id: Int): MutableLiveData<Partido> {
+
+        viewModelScope.launch {
+            val response = repositorio.getPartidosByEquipoId(id)
+            if (response.code() == 200) {
+                response.body().let {
+                    listaPartidosLiveData.postValue(it)
+
+                }
+            }
+        }
+        return listaPartidosLiveData
+    }
 
 
 }
