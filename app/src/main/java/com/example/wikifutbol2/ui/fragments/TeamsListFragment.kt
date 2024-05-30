@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wikifutbol2.R
 import com.example.wikifutbol2.data.models.equipos.Team
 import com.example.wikifutbol2.databinding.TeamsListLayoutBinding
+import com.example.wikifutbol2.ui.MainActivity
 import com.example.wikifutbol2.ui.adaptadores.MyTeamsAdapter
 import com.example.wikifutbol2.viewmodels.ElViewModel
 

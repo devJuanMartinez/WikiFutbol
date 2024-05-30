@@ -18,6 +18,9 @@ class Repositorio {
 
     suspend fun getTeamsByCompetition(id : Int) : Response<ResponseTeams> = RetrofitHelper.retrofitService.getTeamsByCompetition(id)
 
+    suspend fun getPartidosByEquipoId(id: Int) = RetrofitHelper.retrofitService.getPartidosByEquipoId(id)
+    suspend fun getTeamById(id: Int) = RetrofitHelper.retrofitService.getTeamsById(id)
+
 
 
 

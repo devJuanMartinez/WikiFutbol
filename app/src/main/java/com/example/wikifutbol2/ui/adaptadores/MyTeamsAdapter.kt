@@ -36,7 +36,7 @@ class MyTeamsAdapter(
 
         if(equipo == list[itemCount - 1]) holder.binding.divider.isVisible = false
 
-        Glide.with(context).load(equipo.crest).load(holder.binding.ivCrest)
+        Glide.with(context).load(equipo.crest).into(holder.binding.ivCrest)
         holder.binding.tvTeamName.text = equipo.name + " (" + equipo.tla + ")"
         holder.binding.tvCoach.text = equipo.coach?.name
         holder.binding.tvStadium.text = equipo.venue

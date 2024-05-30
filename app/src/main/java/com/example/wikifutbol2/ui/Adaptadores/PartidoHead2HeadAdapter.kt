@@ -1,4 +1,4 @@
-package com.example.wikifutbol2.ui.Adaptadores
+package com.example.wikifutbol2.ui.adaptadores
 
 import android.content.Context
 import android.view.LayoutInflater
