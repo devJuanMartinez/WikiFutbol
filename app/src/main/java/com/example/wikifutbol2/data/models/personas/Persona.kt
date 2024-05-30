@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class Persona(
     @SerializedName("currentTeam")
     val currentTeam: CurrentTeam,
-    @SerializedName("cateOfBirth")
+    @SerializedName("dateOfBirth")
     val dateOfBirth: String,
     @SerializedName("firstName")
     val firstName: String,

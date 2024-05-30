@@ -56,5 +56,5 @@
     <fragment
         android:id="@+id/detallePersonaFragment"
         android:name="com.example.wikifutbol2.ui.fragments.DetallePersonaFragment"
-        android:label="DetallePersonaFragment" />
+        android:label="Detalles de jugador" />
 </navigation>

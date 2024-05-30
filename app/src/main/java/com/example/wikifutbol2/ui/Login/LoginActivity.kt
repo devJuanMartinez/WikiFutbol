@@ -43,27 +43,41 @@ class LoginActivity : AppCompatActivity() {
         val misPreferencias = getSharedPreferences("myprefs", MODE_PRIVATE)
         val usersaved = misPreferencias.getString("user", "")
         val passaved = misPreferencias.getString("pass", "")
-        val checkboxsaved = misPreferencias.getBoolean("chbox", false)
+//        val checkboxsaved = misPreferencias.getBoolean("chbox", false)
 
         var usuario = usersaved.toString()
         var contrasena = passaved.toString()
 
-        if (user.isEmpty() && pass.isEmpty()) {
+        if (user.isEmpty()) {
             binding.tvUsuarioLogin.error = "El campo está vacío"
-            binding.tvContrasenaLogin.error = "El campo está vacío"
-            return
+        }else{
+            binding.tvUsuarioLogin.error = null
         }
+
+
 
         val aaa = "usuario"
         val ppp = "usuario"
 
-        if (user == usuario && pass == contrasena || user == aaa && pass == ppp){
-            openNextScreen()
+        if (user == usuario || user == aaa ){
+            binding.tvUsuarioLogin.error = null
+            if (pass == contrasena || pass == ppp){
+                binding.tvContrasenaLogin.error=null
+                openNextScreen()
+            }else{
+                if (pass.isEmpty()){
+                    binding.tvContrasenaLogin.error = "El campo está vacío"
+                }else{
+                    binding.tvContrasenaLogin.error = "La contraseña es incorrecta"
+                }
+
+            }
         }else{
-            binding.tvUsuarioLogin.error = "El usuario o la contraseña es incorrecta"
-            binding.tvContrasenaLogin.error = "El usuario o la contraseña es incorrecta"
-            return
+            binding.tvUsuarioLogin.error = "El usuario es incorrecto"
+            binding.tvContrasenaLogin.error = null
         }
+
+
 //        if (binding.checkBox.isChecked){
 //            val checkboxsaved = misPreferencias.edit()
 //            checkboxsaved.putBoolean("chbox", true)
