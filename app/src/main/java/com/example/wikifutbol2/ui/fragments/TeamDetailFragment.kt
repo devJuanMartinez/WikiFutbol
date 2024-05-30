@@ -105,17 +105,17 @@ class TeamDetailFragment : Fragment() {
     /**
      * @author Jose Lopez Vilchez
      *
-     * Observa el viewmodel para actualizar el listado de jugadores
+     * Se encarga de manejar el recyclerview de jugadores por su cuenta,
+     * Observa el viewmodel por si solo, no necesitas tocarlo ni nada.
      */
     private fun configuracionRecyclerJugadores() {
-
         val layoutmanager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        adaptadorJugadores = PersonaAdapter(viewModel)
+        adaptadorJugadores = PersonaAdapter(viewModel, viewLifecycleOwner)
         binding.rvPlayers.layoutManager = layoutmanager
         binding.rvPlayers.adapter = adaptadorJugadores
 
         viewModel.getMutTeamSelected().observe(viewLifecycleOwner) {
-            adaptadorJugadores.actualizaDatos(it.squad?.toCollection(ArrayList()) ?: ArrayList())
+            adaptadorJugadores.actualizarListado(it.squad?.toCollection(ArrayList()) ?: ArrayList())
         }
     }
 }

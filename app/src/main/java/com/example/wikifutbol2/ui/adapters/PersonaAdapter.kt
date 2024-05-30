@@ -17,8 +17,9 @@ import com.example.wikifutbol2.viewmodels.ElViewModel
 /**
  * @author Jose Lopez Vilchez
  * @param viewmodel El viewmodel en uso
+ * @param lifecycleOwner Mete aqui un viewLifecycleOwner, y no pienses mas
  */
-class PersonaAdapter(private val viewmodel : ElViewModel) : Adapter<PersonaAdapter.ClaseCelda>() {
+class PersonaAdapter(private val viewmodel : ElViewModel, private val lifecycleOwner: LifecycleOwner) : Adapter<PersonaAdapter.ClaseCelda>() {
 
     inner class ClaseCelda(val binding: CeldaPersonaBinding) : ViewHolder(binding.root)
 
@@ -56,7 +57,7 @@ class PersonaAdapter(private val viewmodel : ElViewModel) : Adapter<PersonaAdapt
         }
     }
 
-    fun actualizaDatos(listado : ArrayList<Squad?>) {
+    fun actualizarListado (listado : ArrayList<Squad?>) {
         this.listado = listado
         notifyDataSetChanged()
     }

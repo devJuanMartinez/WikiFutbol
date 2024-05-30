@@ -52,7 +52,7 @@ class DetallePersonaFragment : Fragment() {
                 .load(persona.currentTeam.crest)
                 .into(imagenescudo)
 
-            if (persona.shirtNumber.toString().isNullOrBlank() || persona.shirtNumber <= 0) {
+            if (persona.shirtNumber <= 0 || persona.shirtNumber.toString().isNullOrBlank()) {
                 costal.text = " "
             } else {
                 costal.text = persona.shirtNumber.toString()
@@ -72,4 +72,5 @@ class DetallePersonaFragment : Fragment() {
             }
         }
     }
+
 }
