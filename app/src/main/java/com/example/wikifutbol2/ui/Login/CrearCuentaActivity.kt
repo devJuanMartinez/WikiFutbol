@@ -16,7 +16,6 @@ class CrearCuentaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = CrearcuentaLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

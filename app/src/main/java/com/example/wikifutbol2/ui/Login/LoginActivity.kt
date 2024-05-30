@@ -17,7 +17,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = LoginLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Thread.sleep(1000)
