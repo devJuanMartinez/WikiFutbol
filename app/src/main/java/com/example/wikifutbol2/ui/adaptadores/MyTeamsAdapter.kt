@@ -15,7 +15,10 @@ class MyTeamsAdapter(
     val context: Context,
     private val listener : MyClick
     ) : RecyclerView.Adapter<MyTeamsAdapter.HolderView>() {
-
+    /**
+     * @author Sergio García Rodríguez
+     * @return
+     */
     interface MyClick{
         fun onHolderClick(team: Team)
     }

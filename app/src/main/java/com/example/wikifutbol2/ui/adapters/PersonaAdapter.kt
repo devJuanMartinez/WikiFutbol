@@ -46,6 +46,7 @@ class PersonaAdapter(private val viewmodel : ElViewModel, private val lifecycleO
                     "Goalkeeper" -> imgtipo.setImageResource(R.drawable.goal)
                     "Defence" -> imgtipo.setImageResource(R.drawable.shield)
                     "Midfield" -> imgtipo.setImageResource(R.drawable.midfield)
+                    "Midfielder" -> imgtipo.setImageResource(R.drawable.midfield)
                     "Offence" -> imgtipo.setImageResource(R.drawable.sword)
                 }
             }
