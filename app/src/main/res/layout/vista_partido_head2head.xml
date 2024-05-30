@@ -41,7 +41,7 @@
     <ImageView
         android:id="@+id/img_homeTeamHead2Head"
         android:layout_width="75dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitCenter"
@@ -52,9 +52,9 @@
     <ImageView
         android:id="@+id/img_awayTeamHead2Head"
         android:layout_width="75dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,7 +107,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/img_awayTeamHead2Head"
         app:layout_constraintEnd_toEndOf="@+id/tv_scoreHomeTeamHead2Head"
         app:layout_constraintStart_toStartOf="@+id/tv_scoreHomeTeamHead2Head"
-        app:layout_constraintTop_toBottomOf="@+id/img_homeTeamHead2Head"
+        app:layout_constraintTop_toTopOf="@+id/img_awayTeamHead2Head"
         tools:text="0" />
 
     <View

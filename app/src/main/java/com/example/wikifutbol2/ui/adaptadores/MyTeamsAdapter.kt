@@ -34,7 +34,6 @@ class MyTeamsAdapter(
     override fun onBindViewHolder(holder: HolderView, position: Int) {
         val equipo = list[position]
 
-        if(equipo == list[itemCount - 1]) holder.binding.divider.isVisible = false
 
         Glide.with(context).load(equipo.crest).into(holder.binding.ivCrest)
         holder.binding.tvTeamName.text = equipo.name + " (" + equipo.tla + ")"

@@ -64,11 +64,11 @@ class LoginActivity : AppCompatActivity() {
             binding.tvContrasenaLogin.error = "El usuario o la contraseña es incorrecta"
             return
         }
-        if (binding.checkBox.isChecked){
-            val checkboxsaved = misPreferencias.edit()
-            checkboxsaved.putBoolean("chbox", true)
-            checkboxsaved.apply()
-        }
+//        if (binding.checkBox.isChecked){
+//            val checkboxsaved = misPreferencias.edit()
+//            checkboxsaved.putBoolean("chbox", true)
+//            checkboxsaved.apply()
+//        }
     }
 
     private fun openNextScreen(){
