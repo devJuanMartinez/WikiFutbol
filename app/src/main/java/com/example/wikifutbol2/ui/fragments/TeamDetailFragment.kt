@@ -1,5 +1,7 @@
 package com.example.wikifutbol2.ui.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import com.example.wikifutbol2.data.models.equipos.Team
 import com.example.wikifutbol2.databinding.TeamDetailsFragmentBinding
 import com.example.wikifutbol2.ui.adapters.PersonaAdapter
 import com.example.wikifutbol2.viewmodels.ElViewModel
+
 
 class TeamDetailFragment : Fragment() {
 
@@ -32,13 +35,19 @@ class TeamDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getTeamSelected().observe(viewLifecycleOwner){
-            fillTeamDetails(it)
+        viewModel.getTeamSelected().observe(viewLifecycleOwner){team ->
+            fillTeamDetails(team)
+            binding.tvWebsite.setOnClickListener{
+                val uri = Uri.parse(team.website)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
         }
 
 
         // Te dejo el tema de rellenar el recyclerview de jugadores apartadillo del resto :)
         configuracionRecyclerJugadores()
+
 
 
 

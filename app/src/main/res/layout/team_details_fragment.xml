@@ -186,6 +186,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:text="TextView"
+        android:textColor="#005DFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_websiteLabel"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
